@@ -14,7 +14,6 @@ namespace dataAccess
         private SqlDataReader lector;
         private string cadenaConexion = "data source = (local)\\SQLEXPRESS; initial catalog =DiWork; integrated security = true;";
 
-
         public SqlDataReader Lector
         {
             get { return lector; }

@@ -41,7 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="M_Desperfecto.cs" />
+    <Compile Include="M_Marca.cs" />
+    <Compile Include="M_Modelo.cs" />
+    <Compile Include="M_Repuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\controlador\controlador.csproj">
+      <Project>{7974adff-8ffb-49b0-a67b-bb2effa5f2cc}</Project>
+      <Name>controlador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dataAccess\dataAccess.csproj">
+      <Project>{1fcc5801-9bc6-484e-92a1-8f11baacfd98}</Project>
+      <Name>dataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

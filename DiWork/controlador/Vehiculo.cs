@@ -8,8 +8,9 @@ namespace controlador
 {
     public abstract class Vehiculo
     {
-        public string marca { get; set; }
-        public string modelo { get; set; }
+        public int ID { get; set; }
+        public Marca marca { get; set; }
+        public Modelo modelo { get; set; }
         public string patente { get; set; }
         public bool estado { get; set; }
         public List<Desperfecto> desperfecto {

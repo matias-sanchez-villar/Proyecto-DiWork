@@ -8,6 +8,7 @@ namespace controlador
 {
     public class Desperfecto
     {
+        public int ID { get; set; }
         public string descripcion { get; set; }
         public string manoDeObra { get; set; }
         public int tiempo { get; set; }

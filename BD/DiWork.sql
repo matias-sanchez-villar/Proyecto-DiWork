@@ -63,6 +63,8 @@ create table TiposAutomovil
 	estado bit not null
 )
 
+go
+
 create table Automoviles
 (
 	IDMarca int not null,
@@ -71,8 +73,10 @@ create table Automoviles
 	IDTipo int foreign key references TiposAutomovil(ID),
 	cantidadPuetas int null check(CantidadPuetas > 0 and CantidadPuetas <= 5),
 	foreign key (IDMarca, IDModelo) references Modelos(ID, IDMarcas),
-	primary key(IDMarca, IDModelo, patente)
+	primary key(IDMarca, IDModelo, patente, IDTipo)
 )
+
+go
 
 create table Motos
 (
@@ -82,4 +86,29 @@ create table Motos
 	cilindrada int not null check(cilindrada > 0),
 	foreign key (IDMarca, IDModelo) references Modelos(ID, IDMarcas),
 	primary key(IDMarca, IDModelo, patente)
+)
+
+go
+
+create table DesperfectosXMotos
+(
+	IDMarca int not null,
+	IDModelo int not null,
+	patente varchar(8) not null,
+	IDDesperfecto int not null foreign key references Desperfectos(ID),
+	foreign key (IDMarca, IDModelo, patente) references Motos(IDMarca, IDModelo, patente),
+	primary key(IDMarca, IDModelo, patente, IDDesperfecto)
+)
+
+go
+
+create table DesperfectosXAutos
+(
+	IDMarca int not null,
+	IDModelo int not null,
+	patente varchar(8) not null,
+	IDTipo int not null,
+	IDDesperfecto int not null foreign key references Desperfectos(ID),
+	foreign key (IDMarca, IDModelo, patente, IDTipo) references Automoviles(IDMarca, IDModelo, patente, IDTipo),
+	primary key(IDMarca, IDModelo, patente, IDTipo, IDDesperfecto)
 )
