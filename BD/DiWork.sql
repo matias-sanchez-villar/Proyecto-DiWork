@@ -112,3 +112,5 @@ create table DesperfectosXAutos
 	foreign key (IDMarca, IDModelo, patente, IDTipo) references Automoviles(IDMarca, IDModelo, patente, IDTipo),
 	primary key(IDMarca, IDModelo, patente, IDTipo, IDDesperfecto)
 )
+
+/* -- vehiculos -- */

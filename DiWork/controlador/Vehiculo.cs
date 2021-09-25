@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace controlador
 {
@@ -13,7 +9,8 @@ namespace controlador
         public Modelo modelo { get; set; }
         public string patente { get; set; }
         public bool estado { get; set; }
-        public List<Desperfecto> desperfecto {
+        public List<Desperfecto> desperfecto
+        {
             get
             {
                 return desperfecto;
@@ -24,7 +21,7 @@ namespace controlador
             }
         }
 
-        public Vehiculo ()
+        public Vehiculo()
         {
             estado = true;
             desperfecto = new List<Desperfecto>();

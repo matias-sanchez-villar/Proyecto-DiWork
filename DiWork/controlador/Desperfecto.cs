@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace controlador
 {
@@ -13,7 +9,7 @@ namespace controlador
         public string manoDeObra { get; set; }
         public int tiempo { get; set; }
         public List<Repuesto> repuesto
-        { 
+        {
             get
             {
                 return repuesto;

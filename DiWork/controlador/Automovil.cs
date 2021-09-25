@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace controlador
+﻿namespace controlador
 {
     public class Automovil : Vehiculo
     {
         private string tipo;
-        public int cantidadPuertas 
+        public int cantidadPuertas
         {
             get { return cantidadPuertas; }
-            set 
+            set
             {
-                if(value > 0 && value <= 5 )
+                if (value > 0 && value <= 5)
                     cantidadPuertas = value;
-            } 
+            }
         }
 
         public void setTipo(Tipo tipo)

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using controlador;
+﻿using controlador;
 using dataAccess;
+using System;
+using System.Collections.Generic;
 
 namespace modelo
 {
@@ -30,14 +27,14 @@ namespace modelo
                 datos.setearConsulta(query);
                 datos.ejecutarLectura();
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     Desperfecto desperfecto = new Desperfecto();
 
                     desperfecto.ID = (int)datos.Lector["ID"];
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
