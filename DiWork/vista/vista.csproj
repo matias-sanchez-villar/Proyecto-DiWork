@@ -113,6 +113,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\controlador\controlador.csproj">
+      <Project>{7974adff-8ffb-49b0-a67b-bb2effa5f2cc}</Project>
+      <Name>controlador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\modelo\modelo.csproj">
+      <Project>{fdff6c39-2131-41ab-a70e-5e8433d8ce88}</Project>
+      <Name>modelo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -57,3 +57,9 @@ C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\obj\Debug\vista.csproj.CoreCo
 C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\obj\Debug\vista.csproj.CopyComplete
 C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\obj\Debug\vista.dll
 C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\obj\Debug\vista.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\bin\controlador.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\bin\modelo.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\bin\dataAccess.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\bin\controlador.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\bin\modelo.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\vista\bin\dataAccess.pdb

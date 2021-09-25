@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace modelo
 {
-    class M_Modelo
+    public class M_Modelo
     {
         public DataAcces datos { get; set; }
         public List<Modelo> lModelo { get; set; }
@@ -33,6 +33,28 @@ namespace modelo
             }
 
             return lModelo;
+        }
+
+        public void agregar(Modelo modelo)
+        {
+            try
+            {
+                datos.setearConsulta("insert into Modelos (IDMarcas, nombre, estado) value (@IDMarcas, @nombre, @estado)");
+
+                datos.setearParametro("@IDMarcas", modelo.IDMarca);
+                datos.setearParametro("@nombre", modelo.nombreMarca);
+                datos.setearParametro("@estado", modelo.estadoMarca);
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

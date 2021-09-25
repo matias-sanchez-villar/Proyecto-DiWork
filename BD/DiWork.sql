@@ -51,6 +51,7 @@ create table Modelos
 	ID int not null identity(1,1),
 	IDMarcas int foreign key references Marcas(ID),
 	nombre varchar(100) not null,
+	estado bit not null
 	primary key(ID, IDMarcas)
 )
 
@@ -114,5 +115,3 @@ create table DesperfectosXAutos
 )
 
 /* -- vehiculos -- */
-
-insert into Marcas (nombre, estado) values ()

@@ -29,9 +29,9 @@ namespace modelo
                 {
                     Marca marca = new Marca();
 
-                    marca.ID = (int)datos.Lector["ID"];
-                    marca.nombre = (string)datos.Lector["nombre"];
-                    marca.estado = Convert.ToBoolean(datos.Lector["estado"]);
+                    marca.IDMarca = (int)datos.Lector["ID"];
+                    marca.nombreMarca = (string)datos.Lector["nombre"];
+                    marca.estadoMarca = Convert.ToBoolean(datos.Lector["estado"]);
 
                     lMarca.Add(marca);
                 }
@@ -63,9 +63,9 @@ namespace modelo
                 {
                     Marca marca = new Marca();
 
-                    marca.ID = (int)datos.Lector["ID"];
-                    marca.nombre = (string)datos.Lector["nombre"];
-                    marca.estado = Convert.ToBoolean(datos.Lector["estado"]);
+                    marca.IDMarca = (int)datos.Lector["ID"];
+                    marca.nombreMarca = (string)datos.Lector["nombre"];
+                    marca.estadoMarca = Convert.ToBoolean(datos.Lector["estado"]);
 
                     lMarca.Add(marca);
                 }
@@ -88,8 +88,8 @@ namespace modelo
             {
                 datos.setearConsulta("insert into Marcas (nombre, estado) values (@nombre, @estado)");
 
-                datos.setearParametro("@nombre", marca.nombre);
-                datos.setearParametro("@estado", marca.estado);
+                datos.setearParametro("@nombre", marca.nombreMarca);
+                datos.setearParametro("@estado", marca.estadoMarca);
 
                 datos.EjecutarAccion();
             }
