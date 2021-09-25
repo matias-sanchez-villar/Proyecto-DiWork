@@ -114,3 +114,5 @@ create table DesperfectosXAutos
 )
 
 /* -- vehiculos -- */
+
+insert into Marcas (nombre, estado) values ()

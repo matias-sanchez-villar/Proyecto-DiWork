@@ -20,7 +20,7 @@ namespace modelo
         {
             lDesperfecto = new List<Desperfecto>();
             string select = "";
-            string query = "";
+            string query = select;
 
             try
             {
