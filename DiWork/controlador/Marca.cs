@@ -12,5 +12,10 @@ namespace controlador
         public string nombreMarca { get; set; }
         public bool estadoMarca { get; set; }
 
+        public Marca()
+        {
+            estadoMarca = true;
+        }
+
     }
 }

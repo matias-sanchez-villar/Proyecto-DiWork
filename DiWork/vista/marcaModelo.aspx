@@ -24,4 +24,56 @@
       </div>
     </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col m-3">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Marca</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <% foreach (controlador.Marca item in lMarca)
+                       { %>
+                          <th><% = item.IDMarca %></th>
+                          <td><% = item.nombreMarca %></td>
+                    <% } %>
+                </tr>
+              </tbody>
+            </table>
+
+        </div>
+
+        <div class="col m-3">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Marca</th>
+                  <th scope="col">Marca</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <% foreach (controlador.Modelo item in lModelo)
+                       { %>
+                          <th><% = item.IDModelo %></th>
+                          <td><% = item.nombreMarca %></td>
+                          <td><% = item.nombreModelo %></td>
+                    <% } %>
+                </tr>
+              </tbody>
+            </table>
+
+        </div>
+      </div>
+    </div>
+
+
+
 </asp:Content>
