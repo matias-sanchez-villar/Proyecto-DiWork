@@ -29,6 +29,7 @@ namespace vista
 
             ddlMarca.Items.Clear();
             lMarca = agregarMarcas();
+            lModelo = agregarModelos();
         }
 
         public List<Marca> agregarMarcas()
@@ -55,6 +56,23 @@ namespace vista
             return lMarca;
         }
 
+        public List<Modelo> agregarModelos()
+        {
+            M_modelo = new M_Modelo();
+            lModelo = new List<Modelo>();
+
+            try
+            {
+                lModelo = M_modelo.listar();
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            return lModelo;
+        }
+
         protected void btnEnviarMarca_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtMarca.Text)) return;
@@ -65,14 +83,13 @@ namespace vista
             try
             {
                 marca.nombreMarca = txtMarca.Text;
-                marca.estadoMarca = true;
                 M_marca.agregar(marca);
             }
             catch (Exception ex)
             {
                 
             }
-            txtMarca.Text = String.Empty;
+            Response.Redirect("marcaModelo.aspx");
         }
 
         protected void btnEnviarModelo_Click(object sender, EventArgs e)
@@ -83,17 +100,17 @@ namespace vista
             M_modelo = new M_Modelo();
             try
             {
-                modelo.nombreMarca = ddlMarca.SelectedValue;
-                modelo.IDMarca = (int)ddlMarca.SelectedIndex;
+                modelo = new Modelo();
+                modelo.IDMarca = int.Parse(ddlMarca.SelectedItem.Value);
+                modelo.nombreMarca = ddlMarca.SelectedItem.Text;
                 modelo.nombreModelo = txtModelo.Text;
-                modelo.estadoModelo = true;
                 M_modelo.agregar(modelo);
             }
             catch (Exception ex)
             {
 
             }
-            txtModelo.Text = String.Empty;
+            Response.Redirect("marcaModelo.aspx");
         }
     }
 }

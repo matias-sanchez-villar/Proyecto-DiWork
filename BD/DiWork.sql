@@ -6,6 +6,7 @@ use DiWork
 
 go
 
+
 create table repuestos
 (
 	ID int primary key not null identity(1,1),
