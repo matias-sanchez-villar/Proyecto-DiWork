@@ -51,8 +51,8 @@ namespace modelo
         public List<Marca> listar(int id)
         {
             lMarca = new List<Marca>();
-            string select = "select * from Marcas";
-            string where = "where ID = " + id;
+            string select = "select * from Marcas ";
+            string where = " where ID = " + id;
 
             try
             {

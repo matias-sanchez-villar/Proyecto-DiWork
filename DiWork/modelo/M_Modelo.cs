@@ -18,8 +18,8 @@ namespace modelo
         public List<Modelo> listar()
         {
             lModelo = new List<Modelo>();
-            string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo";
-            string inner = "inner join Marcas ma on ma.ID = mo.IDMarcas";
+            string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
+            string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas";
 
             try
             {
@@ -32,11 +32,11 @@ namespace modelo
 
                     modelo.IDModelo = (int)datos.Lector["IDMo"];
                     modelo.nombreModelo = (string)datos.Lector["nombreMo"];
-                    modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMo"]);
+                    modelo.estadoModelo = Convert.ToBoolean(datos.Lector["estadoMo"]);
 
                     modelo.IDMarca = (int)datos.Lector["IDMa"];
-                    modelo.nombreModelo = (string)datos.Lector["nombreMa"];
-                    modelo.estadoModelo = Convert.ToBoolean(datos.Lector["estadoMa"]);
+                    modelo.nombreMarca = (string)datos.Lector["nombreMa"];
+                    modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMa"]);
 
                     lModelo.Add(modelo);
                 }
@@ -52,6 +52,43 @@ namespace modelo
 
             return lModelo;
         }
+
+        public Modelo listar(int ID)
+        {
+            Modelo modelo = new Modelo();
+            string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
+            string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas  ";
+            string where = "  where IDMo = " + ID;
+
+            try
+            {
+                datos.setearConsulta(select + inner + where);
+                datos.ejecutarLectura();
+
+                datos.Lector.Read();
+
+                modelo.IDModelo = (int)datos.Lector["IDMo"];
+                modelo.nombreModelo = (string)datos.Lector["nombreMo"];
+                modelo.estadoModelo = Convert.ToBoolean(datos.Lector["estadoMo"]);
+
+                modelo.IDMarca = (int)datos.Lector["IDMa"];
+                modelo.nombreMarca = (string)datos.Lector["nombreMa"];
+                modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMa"]);
+
+                lModelo.Add(modelo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return modelo;
+        }
+
 
         public void agregar(Modelo modelo)
         {

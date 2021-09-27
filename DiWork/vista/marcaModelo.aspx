@@ -55,7 +55,7 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Marca</th>
-                  <th scope="col">Marca</th>
+                  <th scope="col">Modelo</th>
                 </tr>
               </thead>
               <tbody>
