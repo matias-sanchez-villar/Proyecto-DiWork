@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace controlador
+﻿namespace controlador
 {
     public class Automovil : Vehiculo
     {
-        private string tipo;
+        public Tipo tipo { get; set; }
         public int cantidadPuertas
         {
             get { return cantidadPuertas; }
@@ -19,23 +13,8 @@ namespace controlador
             }
         }
 
-        public void setTipo(Tipo tipo)
-        {
-            this.tipo = tipo.ToString();
-        }
-
-        public void setTipo(string tipo)
-        {
-            this.tipo = tipo;
-        }
-
-        public string getTipo()
-        {
-            return tipo;
-        }
-
-
     }
 
     public enum Tipo { compacto = 1, sedan, monovolumen, utilitario, lujo }
+    ///Para asignar tipo.
 }

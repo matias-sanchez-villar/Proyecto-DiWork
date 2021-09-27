@@ -19,11 +19,12 @@ namespace modelo
         {
             lModelo = new List<Modelo>();
             string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
-            string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas";
+            string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas ";
+            string where = "  where ma.estado = 1 and mo.estado = 1 ";
 
             try
             {
-                datos.setearConsulta(select + inner);
+                datos.setearConsulta(select + inner + where);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -58,7 +59,7 @@ namespace modelo
             Modelo modelo = new Modelo();
             string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
             string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas  ";
-            string where = "  where IDMo = " + ID;
+            string where = "  where ma.estado = 1 and mo.estado = 1 and mo.ID = " + ID;
 
             try
             {
@@ -75,7 +76,6 @@ namespace modelo
                 modelo.nombreMarca = (string)datos.Lector["nombreMa"];
                 modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMa"]);
 
-                lModelo.Add(modelo);
             }
             catch (Exception ex)
             {
@@ -111,5 +111,28 @@ namespace modelo
                 datos.cerrarConexion();
             }
         }
+
+        public void modificar(Modelo modelo)
+        {
+            try
+            {
+                datos.setearConsulta("update Modelos set nombre = @nombre, estado = @estado where ID = @ID");
+
+                datos.setearParametro("@ID", modelo.IDModelo);
+                datos.setearParametro("@nombre", modelo.nombreModelo);
+                datos.setearParametro("@estado", modelo.estadoModelo);
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

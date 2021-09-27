@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using controlador;
 using modelo;
-using controlador;
+using System;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace vista
 {
@@ -19,17 +16,14 @@ namespace vista
         public M_Modelo M_modelo { get; set; }
         public Modelo modelo { get; set; }
 
-        public marcaModelo()
-        {
-            //Constructor
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
             ddlMarca.Items.Clear();
             lMarca = agregarMarcas();
             lModelo = agregarModelos();
+            eliminarMarca();
+            eliminarModelo();
         }
 
         public List<Marca> agregarMarcas()
@@ -49,7 +43,7 @@ namespace vista
 
                 return lMarca;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -65,12 +59,54 @@ namespace vista
             {
                 lModelo = M_modelo.listar();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
 
             return lModelo;
+        }
+
+        public void eliminarMarca()
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["IDMarca"]))
+                {
+                    int IDMarca = int.Parse(Request.QueryString["IDMarca"]);
+                    M_marca = new M_Marca();
+                    marca = M_marca.listar(IDMarca);
+                    marca.estadoMarca = false;
+                    M_marca.modificar(marca);
+
+                    Response.Redirect("marcaModelo.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void eliminarModelo()
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["IDModelo"]))
+                {
+                    int IDModelo = int.Parse(Request.QueryString["IDModelo"]);
+                    M_modelo = new M_Modelo();
+                    modelo = M_modelo.listar(IDModelo);
+                    modelo.estadoModelo = false;
+                    M_modelo.modificar(modelo);
+
+                    Response.Redirect("marcaModelo.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         protected void btnEnviarMarca_Click(object sender, EventArgs e)
@@ -87,7 +123,7 @@ namespace vista
             }
             catch (Exception ex)
             {
-                
+
             }
             Response.Redirect("marcaModelo.aspx");
         }
@@ -95,8 +131,6 @@ namespace vista
         protected void btnEnviarModelo_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtModelo.Text)) return;
-
-            modelo = new Modelo();
             M_modelo = new M_Modelo();
             try
             {

@@ -1,17 +1,20 @@
 use master
+
 go
+
 create database DiWork
+
 go
+
 use DiWork
 
 go
 
-
-create table repuestos
+create table Repuestos
 (
 	ID int primary key not null identity(1,1),
 	nombre varchar(100) not null,
-	precio money not null check (precio >0),
+	precio money not null check (precio > 0),
 	estado bit not null
 )
 

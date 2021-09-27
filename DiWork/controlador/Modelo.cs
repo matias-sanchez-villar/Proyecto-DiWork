@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace controlador
+﻿namespace controlador
 {
     public class Modelo : Marca
     {
@@ -12,7 +6,7 @@ namespace controlador
         public string nombreModelo { get; set; }
         public bool estadoModelo { get; set; }
 
-        public Modelo () : base ()
+        public Modelo() : base()
         {
             estadoModelo = true;
         }

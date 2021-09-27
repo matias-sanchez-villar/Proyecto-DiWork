@@ -33,6 +33,7 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Marca</th>
+                  <th scope="col">Accion</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,6 +42,11 @@
                         <tr>
                           <th><% = item.IDMarca %></th>
                           <td><% = item.nombreMarca %></td>
+                          <td>
+                              <a href="?IDMarca=<% = item.IDMarca %>">
+                                  <i class="fas fa-trash-alt"></i>
+                              </a>
+                          </td>
                         </tr>
                     <% } %>
               </tbody>
@@ -56,6 +62,7 @@
                   <th scope="col">ID</th>
                   <th scope="col">Marca</th>
                   <th scope="col">Modelo</th>
+                  <th scope="col">Accion</th>
                 </tr>
               </thead>
               <tbody>
@@ -65,6 +72,11 @@
                           <th><% = item.IDModelo %></th>
                           <td><% = item.nombreMarca %></td>
                           <td><% = item.nombreModelo %></td>
+                          <td>
+                              <a href="?IDModelo=<% = item.IDModelo %>">
+                                  <i class="fas fa-trash-alt"></i>
+                              </a>
+                          </td>
                          </tr>
                     <% } %>
               </tbody>
