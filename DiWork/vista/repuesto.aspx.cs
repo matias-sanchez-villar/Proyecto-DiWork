@@ -15,6 +15,7 @@ namespace vista
         protected void Page_Load(object sender, EventArgs e)
         {
             lRepuesto = agregarRepuesto();
+            eliminarRepuesto();
         }
 
         public List<Repuesto> agregarRepuesto()
@@ -32,6 +33,27 @@ namespace vista
             }
 
             return lRepuesto;
+        }
+
+        public void eliminarRepuesto()
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["ID"]))
+                {
+                    int ID = int.Parse(Request.QueryString["ID"]);
+                    M_repuesto = new M_Repuesto();
+                    repuestos = M_repuesto.listar(ID);
+                    repuestos.estado = false;
+                    M_repuesto.modificar(repuestos);
+
+                    Response.Redirect("repuesto.aspx");
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)

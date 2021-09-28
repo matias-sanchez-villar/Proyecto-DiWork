@@ -31,7 +31,7 @@ create table Desperfectos
 
 go
 
-create table DesperfectosXRepuestos
+create table RepuestosXDesperfecto
 (
 	IDDesperfectos int foreign key references Desperfectos(ID),
 	IDRepuestos int foreign key references Repuestos(ID),
@@ -95,7 +95,7 @@ create table Motos
 
 go
 
-create table DesperfectosXMotos
+create table PresupuestoMoto
 (
 	IDMarca int not null,
 	IDModelo int not null,
@@ -107,7 +107,7 @@ create table DesperfectosXMotos
 
 go
 
-create table DesperfectosXAutos
+create table PresupuestoAutos
 (
 	IDMarca int not null,
 	IDModelo int not null,
