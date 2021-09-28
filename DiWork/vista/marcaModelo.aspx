@@ -73,7 +73,7 @@
                           <td><% = item.nombreMarca %></td>
                           <td><% = item.nombreModelo %></td>
                           <td>
-                              <a href="?IDModelo=<% = item.IDModelo %>">
+                              <a href="?IDModelo=<% = item.IDModelo %>&ID=<% = item.IDMarca %>">
                                   <i class="fas fa-trash-alt"></i>
                               </a>
                           </td>

@@ -2,6 +2,8 @@
 using dataAccess;
 using System;
 using System.Collections.Generic;
+using dataAccess;
+using controlador;
 
 namespace modelo
 {
@@ -54,9 +56,9 @@ namespace modelo
             return lModelo;
         }
 
-        public Modelo listar(int ID)
+        public List<Modelo> listar(int ID)
         {
-            Modelo modelo = new Modelo();
+            lModelo = new List<Modelo>();
             string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
             string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas  ";
             string where = "  where ma.estado = 1 and mo.estado = 1 and mo.ID = " + ID;
@@ -66,15 +68,20 @@ namespace modelo
                 datos.setearConsulta(select + inner + where);
                 datos.ejecutarLectura();
 
-                datos.Lector.Read();
+                while (datos.Lector.Read())
+                {
+                    Modelo modelo = new Modelo();
 
-                modelo.IDModelo = (int)datos.Lector["IDMo"];
-                modelo.nombreModelo = (string)datos.Lector["nombreMo"];
-                modelo.estadoModelo = Convert.ToBoolean(datos.Lector["estadoMo"]);
+                    modelo.IDModelo = (int)datos.Lector["IDMo"];
+                    modelo.nombreModelo = (string)datos.Lector["nombreMo"];
+                    modelo.estadoModelo = Convert.ToBoolean(datos.Lector["estadoMo"]);
 
-                modelo.IDMarca = (int)datos.Lector["IDMa"];
-                modelo.nombreMarca = (string)datos.Lector["nombreMa"];
-                modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMa"]);
+                    modelo.IDMarca = (int)datos.Lector["IDMa"];
+                    modelo.nombreMarca = (string)datos.Lector["nombreMa"];
+                    modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMa"]);
+
+                    lModelo.Add(modelo);
+                }
 
             }
             catch (Exception ex)
@@ -86,9 +93,8 @@ namespace modelo
                 datos.cerrarConexion();
             }
 
-            return modelo;
+            return lModelo;
         }
-
 
         public void agregar(Modelo modelo)
         {

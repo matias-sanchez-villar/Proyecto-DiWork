@@ -3,6 +3,8 @@ using modelo;
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using modelo;
+using controlador;
 
 namespace vista
 {
@@ -45,7 +47,7 @@ namespace vista
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             return lMarca;
         }
@@ -61,7 +63,7 @@ namespace vista
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
 
             return lModelo;
@@ -84,7 +86,7 @@ namespace vista
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
         }
 
@@ -92,20 +94,21 @@ namespace vista
         {
             try
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["IDModelo"]))
-                {
-                    int IDModelo = int.Parse(Request.QueryString["IDModelo"]);
-                    M_modelo = new M_Modelo();
-                    modelo = M_modelo.listar(IDModelo);
-                    modelo.estadoModelo = false;
-                    M_modelo.modificar(modelo);
+                if (String.IsNullOrEmpty(Request.QueryString["IDModelo"])) return;
+                if (String.IsNullOrEmpty(Request.QueryString["ID"])) return;
 
-                    Response.Redirect("marcaModelo.aspx");
-                }
+                int IDMarca = int.Parse(Request.QueryString["ID"]);
+                int IDModelo = int.Parse(Request.QueryString["IDModelo"]);
+                M_modelo = new M_Modelo();
+                modelo = M_modelo.listar(IDModelo).Find(x => x.IDMarca == IDMarca);
+                modelo.estadoModelo = false;
+                M_modelo.modificar(modelo);
+
+                Response.Redirect("marcaModelo.aspx");
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
         }
 
@@ -123,7 +126,7 @@ namespace vista
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             Response.Redirect("marcaModelo.aspx");
         }
@@ -135,14 +138,14 @@ namespace vista
             try
             {
                 modelo = new Modelo();
-                modelo.IDMarca = int.Parse(ddlMarca.SelectedItem.Value);
+                modelo.IDMarca = Convert.ToInt32(ddlMarca.SelectedValue);
                 modelo.nombreMarca = ddlMarca.SelectedItem.Text;
                 modelo.nombreModelo = txtModelo.Text;
                 M_modelo.agregar(modelo);
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             Response.Redirect("marcaModelo.aspx");
         }

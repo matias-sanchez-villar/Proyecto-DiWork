@@ -7,6 +7,9 @@
     <div class="container">
       <div class="row">
         <div class="col">
+            <h1 class="text-center">Generar Repuesto</h1>
+        </div>
+        <div class="col">
             <asp:TextBox ID="txtNombre" runat="server" placeholder="Nombre" class="form-control m-2"></asp:TextBox>
         </div>
         <div class="col">

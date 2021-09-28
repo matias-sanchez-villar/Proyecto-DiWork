@@ -18,9 +18,10 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Generar presupuesto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Add Repuesto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Add Vehiculo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Add Marca y Modelo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Automoviles.aspx">Add automovil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Motos.aspx">Add motos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="repuesto.aspx">Add Repuesto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="marcaModelo.aspx">Add Marca y Modelo</a></li>
                 </ul>
             </div>
         </div>

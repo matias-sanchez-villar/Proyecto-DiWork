@@ -1,5 +1,4 @@
 use master
-
 go
 
 create database DiWork
@@ -77,6 +76,7 @@ create table Automoviles
 	patente varchar(8) not null,
 	IDTipo int foreign key references TiposAutomovil(ID),
 	cantidadPuetas int null check(CantidadPuetas > 0 and CantidadPuetas <= 5),
+	estado bit not null,
 	foreign key (IDMarca, IDModelo) references Modelos(ID, IDMarcas),
 	primary key(IDMarca, IDModelo, patente, IDTipo)
 )
@@ -89,6 +89,7 @@ create table Motos
 	IDModelo int not null,
 	patente varchar(8) not null,
 	cilindrada int not null check(cilindrada > 0),
+	estado bit not null,
 	foreign key (IDMarca, IDModelo) references Modelos(ID, IDMarcas),
 	primary key(IDMarca, IDModelo, patente)
 )

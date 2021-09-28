@@ -67,13 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Automoviles.aspx" />
     <Content Include="marcaModelo.aspx" />
+    <Content Include="Motos.aspx" />
     <Content Include="presupuesto.aspx" />
     <Content Include="repuesto.aspx" />
-    <Content Include="vehiculo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Automoviles.aspx.cs">
+      <DependentUpon>Automoviles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Automoviles.aspx.designer.cs">
+      <DependentUpon>Automoviles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Index.Master.cs">
       <DependentUpon>Index.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -87,6 +95,13 @@
     </Compile>
     <Compile Include="marcaModelo.aspx.designer.cs">
       <DependentUpon>marcaModelo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Motos.aspx.cs">
+      <DependentUpon>Motos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Motos.aspx.designer.cs">
+      <DependentUpon>Motos.aspx</DependentUpon>
     </Compile>
     <Compile Include="presupuesto.aspx.cs">
       <DependentUpon>presupuesto.aspx</DependentUpon>
@@ -102,13 +117,6 @@
     </Compile>
     <Compile Include="repuesto.aspx.designer.cs">
       <DependentUpon>repuesto.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="vehiculo.aspx.cs">
-      <DependentUpon>vehiculo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="vehiculo.aspx.designer.cs">
-      <DependentUpon>vehiculo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

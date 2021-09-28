@@ -44,6 +44,7 @@
     <Compile Include="M_Desperfecto.cs" />
     <Compile Include="M_Marca.cs" />
     <Compile Include="M_Modelo.cs" />
+    <Compile Include="M_Moto.cs" />
     <Compile Include="M_Repuesto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

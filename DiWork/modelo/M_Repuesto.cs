@@ -2,6 +2,8 @@
 using dataAccess;
 using System;
 using System.Collections.Generic;
+using dataAccess;
+using controlador;
 
 namespace modelo
 {

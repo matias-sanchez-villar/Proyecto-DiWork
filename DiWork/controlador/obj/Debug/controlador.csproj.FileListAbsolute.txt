@@ -1,6 +1,0 @@
-C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\controlador\bin\Debug\controlador.dll
-C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\controlador\bin\Debug\controlador.pdb
-C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\controlador\obj\Debug\controlador.csproj.CoreCompileInputs.cache
-C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\controlador\obj\Debug\controlador.dll
-C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\controlador\obj\Debug\controlador.pdb
-C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\controlador\obj\Debug\controlador.csproj.AssemblyReference.cache
