@@ -1,0 +1,6 @@
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\dataAccess\bin\Debug\dataAccess.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\dataAccess\bin\Debug\dataAccess.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\dataAccess\obj\Debug\dataAccess.csproj.AssemblyReference.cache
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\dataAccess\obj\Debug\dataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\dataAccess\obj\Debug\dataAccess.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\dataAccess\obj\Debug\dataAccess.pdb

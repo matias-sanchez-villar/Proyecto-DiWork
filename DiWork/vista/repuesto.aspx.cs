@@ -50,7 +50,7 @@ namespace vista
                     Response.Redirect("repuesto.aspx");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

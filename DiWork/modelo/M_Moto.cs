@@ -38,7 +38,7 @@ namespace modelo
 
                     moto.modelo = modelo.listar((int)datos.Lector["IDModelo"]).Find(x => x.IDMarca == (int)datos.Lector["IDMarca"]);
                     moto.patente = (string)datos.Lector["patente"];
-                    moto.cilindrada = (int)datos.Lector["cilindrara"];
+                    moto.cilindrada = (int)datos.Lector["cilindrada"];
                     moto.estado = Convert.ToBoolean(datos.Lector["estado"]);
 
                     lMoto.Add(moto);
@@ -76,7 +76,7 @@ namespace modelo
 
                 moto.modelo = modelo.listar((int)datos.Lector["IDModelo"]).Find(x => x.IDMarca == (int)datos.Lector["IDMarca"]);
                 moto.patente = (string)datos.Lector["patente"];
-                moto.cilindrada = (int)datos.Lector["cilindrara"];
+                moto.cilindrada = (int)datos.Lector["cilindrada"];
                 moto.estado = Convert.ToBoolean(datos.Lector["estado"]);
 
             }
@@ -96,13 +96,12 @@ namespace modelo
         {
             try
             {
-                datos.setearConsulta(" insert into Motos (IDMarca, IDModelo, patente, cilindrada, estado) values (@IDMarca, @IDModelo, @patente, @cilindrada, @estado) ");
+                datos.setearConsulta(" addMoto @IDMarca, @IDModelo, @patente, @cilindrada ");
                 
                 datos.setearParametro("@IDMarca", moto.modelo.IDMarca);
                 datos.setearParametro("@IDModelo", moto.modelo.IDModelo);
                 datos.setearParametro("@patente", moto.patente);
                 datos.setearParametro("@cilindrada", moto.cilindrada);
-                datos.setearParametro("@estado", moto.estado);
 
                 datos.EjecutarAccion();
             }

@@ -1,11 +1,11 @@
-﻿using System;
+﻿using controlador;
+using modelo;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using modelo;
 using controlador;
+using modelo;
 
 namespace vista
 {
@@ -26,6 +26,7 @@ namespace vista
         {
             if (Page.IsPostBack) return;
             agregarMarcas();
+            lMoto = new List<Moto>();
             lMoto = agregarMotos();
         }
 
@@ -38,7 +39,7 @@ namespace vista
             {
                 lMoto = M_moto.listar();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -75,6 +76,14 @@ namespace vista
             try
             {
                 lModelo = M_modelo.listar(ID);
+
+                if (lModelo.Count == 0)
+                {
+                    ListItem listItemAux = new ListItem("Sin marcas", "#");
+                    ddlModelo.Items.Add(listItemAux);
+                    return;
+                }
+
                 foreach (controlador.Modelo item in lModelo)
                 {
                     ListItem listItemAux = new ListItem(item.nombreModelo, item.IDModelo.ToString());
@@ -95,7 +104,24 @@ namespace vista
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrEmpty(txtCilindrada.Text)) return;
+            if (string.IsNullOrEmpty(txtPatente.Text)) return;
+
+            motos = new Moto();
+            M_moto = new M_Moto();
+            try
+            {
+                motos.modelo.IDMarca = Convert.ToInt32(ddlMarca.SelectedValue);
+                motos.modelo.IDModelo = Convert.ToInt32(ddlModelo.SelectedValue);
+                motos.cilindrada = int.Parse(txtCilindrada.Text);
+                motos.patente = txtPatente.Text;
+                M_moto.agregar(motos);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            Response.Redirect("Motos.aspx");
         }
     }
 }

@@ -3,8 +3,8 @@ using modelo;
 using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
-using modelo;
 using controlador;
+using modelo;
 
 namespace vista
 {

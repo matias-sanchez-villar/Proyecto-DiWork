@@ -1,4 +1,5 @@
 use master
+
 go
 
 create database DiWork
@@ -58,14 +59,6 @@ create table Modelos
 	primary key(ID, IDMarcas)
 )
 
-go
-
-create table TiposAutomovil
-(
-	ID int primary key not null identity(1,1),
-	nombre varchar(100) not null,
-	estado bit not null
-)
 
 go
 
@@ -74,11 +67,11 @@ create table Automoviles
 	IDMarca int not null,
 	IDModelo int not null,
 	patente varchar(8) not null,
-	IDTipo int foreign key references TiposAutomovil(ID),
+	Tipo  varchar(40) not null,
 	cantidadPuetas int null check(CantidadPuetas > 0 and CantidadPuetas <= 5),
 	estado bit not null,
 	foreign key (IDMarca, IDModelo) references Modelos(ID, IDMarcas),
-	primary key(IDMarca, IDModelo, patente, IDTipo)
+	primary key(IDMarca, IDModelo, patente)
 )
 
 go
@@ -115,8 +108,37 @@ create table PresupuestoAutos
 	patente varchar(8) not null,
 	IDTipo int not null,
 	IDDesperfecto int not null foreign key references Desperfectos(ID),
-	foreign key (IDMarca, IDModelo, patente, IDTipo) references Automoviles(IDMarca, IDModelo, patente, IDTipo),
-	primary key(IDMarca, IDModelo, patente, IDTipo, IDDesperfecto)
+	foreign key (IDMarca, IDModelo, patente) references Automoviles(IDMarca, IDModelo, patente),
+	primary key(IDMarca, IDModelo, patente, IDDesperfecto)
 )
 
-/* -- vehiculos -- */
+go
+
+/* Procedimientos */
+
+create procedure addMoto 
+(
+	@IDMarca int, 
+	@IDModelo int, 
+	@Patente varchar(9), 
+	@Cilindrada int
+) 
+as
+begin
+	insert into Motos (IDMarca, IDModelo, patente, cilindrada, estado) values (@IDMarca, @IDModelo, @Patente, @Cilindrada, 1)
+end
+
+go
+
+create procedure addAutomovil
+(
+	@IDMarca int, 
+	@IDModelo int, 
+	@Patente varchar(9), 
+	@Tipo varchar(15),
+	@Cilindrada int
+) 
+as
+begin
+	insert into Motos (IDMarca, IDModelo, patente, cilindrada, estado) values (@IDMarca, @IDModelo, @Patente, @Cilindrada, 1)
+end

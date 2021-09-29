@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
         <div class="container">
           <div class="row">
@@ -11,12 +11,22 @@
                 </div>
            </div>
            <div class="row">
-                <div class="col">
-                    <asp:DropDownList class="form-control m-3" ID="ddlMarca" runat="server"></asp:DropDownList>
-                </div>
-                <div class="col">
-                    <asp:DropDownList class="form-control m-3" ID="ddlModelo" runat="server"></asp:DropDownList>
-                </div>
+                <asp:UpdatePanel ID="udp" runat="server">
+                   <ContentTemplate>
+                        <div class="row">
+                            <div class="col">
+                                <asp:DropDownList class="form-control m-2" ID="ddlMarca" runat="server" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:ListItem Text="Marcas" Value="#" />
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col">
+                                <asp:DropDownList class="form-control m-2" ID="ddlModelo" runat="server">
+                                    <asp:ListItem Text="Modelos" Value="#" />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
                 <div class="col">
                     <asp:DropDownList class="form-control m-3" ID="ddlTipo" runat="server"></asp:DropDownList>
                 </div>
@@ -39,6 +49,24 @@
 
             </div>
          </div>
+
+
+
+        <table class="table m-3">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Patente</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Puertas</th>
+                    <th scope="col">Accion</th>
+                </tr>
+            </thead>
+
+            </tbody>
+        </table>
 
 
 </asp:Content>

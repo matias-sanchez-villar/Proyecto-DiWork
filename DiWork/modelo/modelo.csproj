@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="M_Automovil.cs" />
     <Compile Include="M_Desperfecto.cs" />
     <Compile Include="M_Marca.cs" />
     <Compile Include="M_Modelo.cs" />

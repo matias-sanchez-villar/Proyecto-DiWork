@@ -1,0 +1,11 @@
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\bin\Debug\modelo.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\bin\Debug\modelo.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\bin\Debug\controlador.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\bin\Debug\dataAccess.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\bin\Debug\controlador.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\bin\Debug\dataAccess.pdb
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\obj\Debug\modelo.csproj.AssemblyReference.cache
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\obj\Debug\modelo.csproj.CoreCompileInputs.cache
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\obj\Debug\modelo.csproj.CopyComplete
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\obj\Debug\modelo.dll
+C:\Users\Mati\Desktop\Proyecto DiWork\DiWork\modelo\obj\Debug\modelo.pdb

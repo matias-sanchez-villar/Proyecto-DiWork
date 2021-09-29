@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="container">
           <div class="row">
                 <div class="col">
@@ -10,14 +10,24 @@
                 </div>
            </div>
            <div class="row">
+               <asp:UpdatePanel ID="udp" runat="server">
+                   <ContentTemplate>
+                        <div class="row">
+                            <div class="col">
+                                <asp:DropDownList class="form-control m-2" ID="ddlMarca" runat="server" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:ListItem Text="Marcas" Value="#" />
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col">
+                                <asp:DropDownList class="form-control m-2" ID="ddlModelo" runat="server">
+                                    <asp:ListItem Text="Modelos" Value="#" />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+               </asp:UpdatePanel>
                 <div class="col">
-                    <asp:DropDownList class="form-control m-2" ID="ddlMarca" runat="server" OnSelectedIndexChanged="ddlMarca_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                </div>
-                <div class="col">
-                    <asp:DropDownList class="form-control m-2" ID="ddlModelo" runat="server"></asp:DropDownList>
-                </div>
-                <div class="col">
-                    <asp:TextBox class="form-control m-2" placeholder="Patente" ID="txtPatente" runat="server"></asp:TextBox>
+                    <asp:TextBox class="form-control m-2" size="9" placeholder="Patente" ID="txtPatente" runat="server"></asp:TextBox>
                 </div>
                 <div class="col">
                     <asp:TextBox type="number" class="form-control m-2" placeholder="Cilindrada" ID="txtCilindrada" runat="server"></asp:TextBox>
@@ -41,22 +51,7 @@
                   <th scope="col">Accion</th>
                 </tr>
               </thead>
-              <tbody>
-                    <% foreach (controlador.Moto item in lMoto)
-                       { %>
-                        <tr>
-                          <th><% = item.ID %></th>
-                          <th><% = item.modelo.nombreMarca %></th>
-                          <th><% = item.modelo.nombreModelo %></th>
-                          <th><% = item.patente %></th>
-                          <td><% = item.cilindrada %></td>
-                          <td>
-                              <a href="?IDMarca=<% = item.ID %>">
-                                  <i class="fas fa-trash-alt"></i>
-                              </a>
-                          </td>
-                        </tr>
-                    <% } %>
+
               </tbody>
             </table>
 

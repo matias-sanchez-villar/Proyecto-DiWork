@@ -61,7 +61,7 @@ namespace modelo
             lModelo = new List<Modelo>();
             string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
             string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas  ";
-            string where = "  where ma.estado = 1 and mo.estado = 1 and mo.ID = " + ID;
+            string where = "  where mo.estado = 1 and ma.estado = 1 and ma.ID = " + ID;
 
             try
             {
