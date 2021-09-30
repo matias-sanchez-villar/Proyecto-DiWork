@@ -16,7 +16,7 @@
         <div class="col">
 
             <h1 class="text-center m-2">Generar Modelo</h1>
-            <asp:DropDownList class="form-control m-2" ID="ddlMarca" runat="server"></asp:DropDownList>
+            <asp:DropDownList class="form-control m-2" ID="DDLM" runat="server"></asp:DropDownList>
             <asp:TextBox ID="txtModelo" runat="server" class="form-control m-2" placeholder="Modelo"></asp:TextBox>
             <asp:Button ID="btnEnviarModelo" runat="server" Text="Agregar"  class="btn btn-primary m-2" OnClick="btnEnviarModelo_Click"/>
 

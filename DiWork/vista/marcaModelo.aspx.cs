@@ -20,8 +20,6 @@ namespace vista
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            ddlMarca.Items.Clear();
             lMarca = agregarMarcas();
             lModelo = agregarModelos();
             eliminarMarca();
@@ -40,10 +38,8 @@ namespace vista
                 foreach (controlador.Marca item in lMarca)
                 {
                     ListItem listItemAux = new ListItem(item.nombreMarca, item.IDMarca.ToString());
-                    ddlMarca.Items.Add(listItemAux);
+                    DDLM.Items.Add(listItemAux);
                 }
-
-                return lMarca;
             }
             catch (Exception ex)
             {
@@ -138,8 +134,9 @@ namespace vista
             try
             {
                 modelo = new Modelo();
-                modelo.IDMarca = Convert.ToInt32(ddlMarca.SelectedValue);
-                modelo.nombreMarca = ddlMarca.SelectedItem.Text;
+                modelo.IDMarca = Convert.ToInt32(DDLM.SelectedValue);
+                if (modelo.IDMarca == 1 || modelo.IDMarca == 0) return;
+                modelo.nombreMarca = DDLM.SelectedItem.Text;
                 modelo.nombreModelo = txtModelo.Text;
                 M_modelo.agregar(modelo);
             }
