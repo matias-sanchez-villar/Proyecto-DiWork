@@ -103,6 +103,8 @@ namespace modelo
                 datos.setearParametro("@Tipo", auto.tipo.ToString());
                 datos.setearParametro("@CantidadPuertas", auto.cantidadPuertas);
 
+                datos.EjecutarAccion();
+
             }
             catch (Exception ex)
             {

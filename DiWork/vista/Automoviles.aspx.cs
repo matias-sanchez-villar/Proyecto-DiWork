@@ -21,12 +21,19 @@ namespace vista
         public M_Automovil M_automovil { get; set; }
         public Automovil automovil { get; set; }
 
+        public List<Automovil> LFAutomovil= new List<Automovil>();
+
+        public Automoviles()
+        {
+            automovil = new Automovil();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Page.IsPostBack) return;
             agregarMarcas();
             agregarTipo();
-            
+            LFAutomovil = agregarAutomovil();
         }
 
         public List<Automovil> agregarAutomovil()
@@ -46,11 +53,14 @@ namespace vista
 
         public void agregarTipo()
         {
+            int cont = 1;
             foreach (Tipo r in Enum.GetValues(typeof(Tipo)))
             {
-                ListItem item = new ListItem(Enum.GetName(typeof(Tipo), r), r.ToString());
+                ListItem item = new ListItem(Enum.GetName(typeof(Tipo), r), cont.ToString());
                 ddlTipo.Items.Add(item);
+                cont++;
             }
+
         }
 
         public void agregarMarcas()
@@ -67,6 +77,7 @@ namespace vista
                     ListItem listItemAux = new ListItem(item.nombreMarca, item.IDMarca.ToString());
                     ddlMarca.Items.Add(listItemAux);
                 }
+
             }
             catch (Exception ex)
             {
@@ -117,7 +128,7 @@ namespace vista
             {
                 automovil.modelo.IDMarca = Convert.ToInt32(ddlMarca.SelectedValue);
                 automovil.modelo.IDModelo = Convert.ToInt32(ddlModelo.SelectedValue);
-                automovil.tipo = (Tipo)Enum.Parse(typeof(Tipo), ddlModelo.SelectedItem.Text.ToString());
+                automovil.tipo = (Tipo)int.Parse(ddlTipo.SelectedValue);
                 automovil.cantidadPuertas = Convert.ToInt32(ddlPuerta.SelectedValue);
                 automovil.patente = txtPatente.Text;
 

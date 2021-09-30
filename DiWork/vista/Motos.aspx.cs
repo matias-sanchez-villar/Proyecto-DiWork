@@ -21,13 +21,14 @@ namespace vista
         public List<Moto> lMoto { get; set; }
         public M_Moto M_moto { get; set; }
 
+        public List<Moto> lFMoto = new List<Moto>();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Page.IsPostBack) return;
             agregarMarcas();
-            lMoto = new List<Moto>();
-            lMoto = agregarMotos();
+            lFMoto = agregarMotos();
         }
 
         public List<Moto> agregarMotos()

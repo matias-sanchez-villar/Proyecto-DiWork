@@ -142,7 +142,3 @@ as
 begin
 	insert into Automoviles(IDMarca, IDModelo, patente, Tipo, cantidadPuetas, estado) values (@IDMarca, @IDModelo, @Patente, @Tipo, @CantidadPuertas, 1)
 end
-
-select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo
-inner join Marcas ma on ma.ID = mo.IDMarcas
-where mo.estado = 1 and ma.estado = 1 and ma.ID = 1

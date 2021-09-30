@@ -43,7 +43,6 @@
             <table class="table m-3">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
                   <th scope="col">Marca</th>
                   <th scope="col">Modelo</th>
                   <th scope="col">Patente</th>
@@ -51,7 +50,20 @@
                   <th scope="col">Accion</th>
                 </tr>
               </thead>
-
+                   <% foreach (controlador.Moto item in lFMoto)
+                       { %>
+                        <tr>
+                          <th><% = item.modelo.nombreMarca %></th>
+                          <th><% = item.modelo.nombreModelo %></th>
+                          <th><% = item.patente %></th>
+                          <th><% = item.cilindrada %></th>
+                          <td>
+                              <a href="?IDMarca=<% = item.patente %>">
+                                  <i class="fas fa-trash-alt"></i>
+                              </a>
+                          </td>
+                        </tr>
+                    <% } %>
               </tbody>
             </table>
 
