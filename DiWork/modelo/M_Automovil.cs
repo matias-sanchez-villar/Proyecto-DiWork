@@ -37,7 +37,8 @@ namespace modelo
 
                     auto.modelo = modelo.listar((int)datos.Lector["IDModelo"]).Find(x => x.IDMarca == (int)datos.Lector["IDMarca"]);
                     auto.patente = (string)datos.Lector["patente"];
-                    auto.tipo = (Tipo)datos.Lector["Tipo"];
+                    string tipo = (String)datos.Lector["tipo"];
+                    auto.tipo = (Tipo)Enum.Parse(typeof(Tipo), tipo);
                     auto.cantidadPuertas = (int)datos.Lector["cantidadPuetas"];
                     auto.estado = Convert.ToBoolean(datos.Lector["estado"]);
 
@@ -74,7 +75,8 @@ namespace modelo
 
                 auto.modelo = modelo.listar((int)datos.Lector["IDModelo"]).Find(x => x.IDMarca == (int)datos.Lector["IDMarca"]);
                 auto.patente = (string)datos.Lector["patente"];
-                auto.tipo = (Tipo)datos.Lector["Tipo"];
+                string tipo = (String)datos.Lector["tipo"];
+                auto.tipo = (Tipo)Enum.Parse(typeof(Tipo), tipo);
                 auto.cantidadPuertas = (int)datos.Lector["cantidadPuetas"];
                 auto.estado = Convert.ToBoolean(datos.Lector["estado"]);
 
@@ -95,7 +97,7 @@ namespace modelo
         {
             try
             {
-                datos.setearConsulta("addAutomovil @IDMarca, @IDModelo, @Patente, @Tipo, @CantidadPuertas");
+                datos.setearConsulta("addAutomovil @IDMarca, @IDModelo, @Patente, @tipo, @CantidadPuertas");
 
                 datos.setearParametro("@IDMarca", auto.modelo.IDMarca);
                 datos.setearParametro("@IDModelo", auto.modelo.IDModelo);

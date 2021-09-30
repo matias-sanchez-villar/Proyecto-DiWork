@@ -76,7 +76,7 @@ namespace vista
 
             try
             {
-                lModelo = M_modelo.listar(ID);
+                lModelo = M_modelo.listarModelosXMarcas(ID);
 
                 if (lModelo.Count == 0)
                 {

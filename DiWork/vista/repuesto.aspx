@@ -35,7 +35,7 @@
                 </tr>
               </thead>
               <tbody>
-                    <% foreach (controlador.Repuesto item in lRepuesto)
+                    <% foreach (controlador.Repuesto item in lFRepuesto)
                        { %>
                         <tr>
                           <th><% = item.ID %></th>

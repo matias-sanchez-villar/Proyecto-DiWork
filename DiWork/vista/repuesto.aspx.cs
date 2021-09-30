@@ -12,9 +12,11 @@ namespace vista
         public List<Repuesto> lRepuesto { get; set; }
         public M_Repuesto M_repuesto { get; set; }
 
+        public List<Repuesto> lFRepuesto = new List<Repuesto>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            lRepuesto = agregarRepuesto();
+            lFRepuesto = agregarRepuesto();
             eliminarRepuesto();
         }
 
@@ -43,6 +45,7 @@ namespace vista
                 {
                     int ID = int.Parse(Request.QueryString["ID"]);
                     M_repuesto = new M_Repuesto();
+                    repuestos = new Repuesto();
                     repuestos = M_repuesto.listar(ID);
                     repuestos.estado = false;
                     M_repuesto.modificar(repuestos);

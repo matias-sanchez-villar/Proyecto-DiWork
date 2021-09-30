@@ -37,7 +37,7 @@
                 </tr>
               </thead>
               <tbody>
-                    <% foreach (controlador.Marca item in lMarca)
+                    <% foreach (controlador.Marca item in lFMarca)
                        { %>
                         <tr>
                           <th><% = item.IDMarca %></th>
@@ -66,7 +66,7 @@
                 </tr>
               </thead>
               <tbody>
-                    <% foreach (controlador.Modelo item in lModelo)
+                    <% foreach (controlador.Modelo item in lFModelo)
                        { %>
                          <tr>
                           <th><% = item.IDModelo %></th>

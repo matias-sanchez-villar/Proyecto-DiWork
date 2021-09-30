@@ -18,10 +18,13 @@ namespace vista
         public M_Modelo M_modelo { get; set; }
         public Modelo modelo { get; set; }
 
+        public List<Marca> lFMarca = new List<Marca>();
+        public List<Modelo> lFModelo = new List<Modelo>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            lMarca = agregarMarcas();
-            lModelo = agregarModelos();
+            lFMarca = agregarMarcas();
+            lFModelo = agregarModelos();
             eliminarMarca();
             eliminarModelo();
         }
@@ -73,6 +76,7 @@ namespace vista
                 {
                     int IDMarca = int.Parse(Request.QueryString["IDMarca"]);
                     M_marca = new M_Marca();
+                    marca = new Marca();
                     marca = M_marca.listar(IDMarca);
                     marca.estadoMarca = false;
                     M_marca.modificar(marca);
@@ -96,6 +100,7 @@ namespace vista
                 int IDMarca = int.Parse(Request.QueryString["ID"]);
                 int IDModelo = int.Parse(Request.QueryString["IDModelo"]);
                 M_modelo = new M_Modelo();
+                modelo = new Modelo();
                 modelo = M_modelo.listar(IDModelo).Find(x => x.IDMarca == IDMarca);
                 modelo.estadoModelo = false;
                 M_modelo.modificar(modelo);
@@ -135,7 +140,6 @@ namespace vista
             {
                 modelo = new Modelo();
                 modelo.IDMarca = Convert.ToInt32(DDLM.SelectedValue);
-                if (modelo.IDMarca == 1 || modelo.IDMarca == 0) return;
                 modelo.nombreMarca = DDLM.SelectedItem.Text;
                 modelo.nombreModelo = txtModelo.Text;
                 M_modelo.agregar(modelo);

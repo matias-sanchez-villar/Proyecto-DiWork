@@ -61,6 +61,46 @@ namespace modelo
             lModelo = new List<Modelo>();
             string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
             string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas  ";
+            string where = "  where mo.estado = 1 and ma.estado = 1 and mo.ID = " + ID;
+
+            try
+            {
+                datos.setearConsulta(select + inner + where);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Modelo modelo = new Modelo();
+
+                    modelo.IDModelo = (int)datos.Lector["IDMo"];
+                    modelo.nombreModelo = (string)datos.Lector["nombreMo"];
+                    modelo.estadoModelo = Convert.ToBoolean(datos.Lector["estadoMo"]);
+
+                    modelo.IDMarca = (int)datos.Lector["IDMa"];
+                    modelo.nombreMarca = (string)datos.Lector["nombreMa"];
+                    modelo.estadoMarca = Convert.ToBoolean(datos.Lector["estadoMa"]);
+
+                    lModelo.Add(modelo);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return lModelo;
+        }
+
+        public List<Modelo> listarModelosXMarcas(int ID)
+        {
+            lModelo = new List<Modelo>();
+            string select = "select ma.ID IDMa, ma.nombre nombreMa, ma.estado estadoMa, mo.ID IDMo, mo.nombre nombreMo, mo.estado estadoMo from Modelos mo  ";
+            string inner = " inner join Marcas ma on ma.ID = mo.IDMarcas  ";
             string where = "  where mo.estado = 1 and ma.estado = 1 and ma.ID = " + ID;
 
             try

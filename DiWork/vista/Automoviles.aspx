@@ -70,6 +70,7 @@
                           <th><% = item.modelo.nombreMarca %></th>
                           <th><% = item.modelo.nombreModelo %></th>
                           <th><% = item.patente %></th>
+                          <th><% = item.tipo.ToString() %></th>
                           <th><% = item.cantidadPuertas %></th>
                           <td>
                               <a href="?IDMarca=<% = item.patente %>">
