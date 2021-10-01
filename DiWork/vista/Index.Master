@@ -17,7 +17,7 @@
         <div class="container-fluid"><a class="navbar-brand" href="#"><img src="https://cdn.bitrix24.com/b6096907/landing/c90/c908f9324d3d4a0e57a63ae229125b91/Logo3_1x.png"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Generar presupuesto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="presupuesto.aspx">Generar presupuesto</a></li>
                     <li class="nav-item"><a class="nav-link" href="Automoviles.aspx">Add automovil</a></li>
                     <li class="nav-item"><a class="nav-link" href="Motos.aspx">Add motos</a></li>
                     <li class="nav-item"><a class="nav-link" href="repuesto.aspx">Add Repuesto</a></li>
