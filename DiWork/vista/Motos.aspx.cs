@@ -29,6 +29,28 @@ namespace vista
             if (Page.IsPostBack) return;
             agregarMarcas();
             lFMoto = agregarMotos();
+            eliminarMoto();
+        }
+
+        public void eliminarMoto()
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["Patente"]))
+                {
+                    string Patente = Request.QueryString["Patente"];
+                    M_moto = new M_Moto();
+                    motos = new Moto();
+                    motos = M_moto.listar(Patente);
+                    motos.estado = false;
+                    M_moto.modificar(motos);
+                    Response.Redirect("Motos.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Moto> agregarMotos()

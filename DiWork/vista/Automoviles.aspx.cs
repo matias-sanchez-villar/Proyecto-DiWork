@@ -34,6 +34,28 @@ namespace vista
             agregarMarcas();
             agregarTipo();
             LFAutomovil = agregarAutomovil();
+            eliminarAutomovil();
+        }
+
+        public void eliminarAutomovil()
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(Request.QueryString["Patente"]))
+                {
+                    string Patente = Request.QueryString["Patente"];
+                    M_automovil = new M_Automovil();
+                    automovil = new Automovil();
+                    automovil = M_automovil.listar(Patente);
+                    automovil.estado = false;
+                    M_automovil.modificar(automovil);
+                    Response.Redirect("Automoviles.aspx");
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Automovil> agregarAutomovil()

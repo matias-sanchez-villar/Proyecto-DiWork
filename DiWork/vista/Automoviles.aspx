@@ -73,7 +73,7 @@
                           <th><% = item.tipo.ToString() %></th>
                           <th><% = item.cantidadPuertas %></th>
                           <td>
-                              <a href="?IDMarca=<% = item.patente %>">
+                              <a href="?Patente=<% = item.patente %>">
                                   <i class="fas fa-trash-alt"></i>
                               </a>
                           </td>

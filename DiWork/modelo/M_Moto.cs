@@ -57,7 +57,7 @@ namespace modelo
         }
 
 
-        public Moto listar(int id)
+        public Moto listar(string patente)
         {
             Moto moto = new Moto();
             lMoto = new List<Moto>();
@@ -65,7 +65,7 @@ namespace modelo
             M_Modelo modelo = new M_Modelo();
 
             string select = " select * from Motos ";
-            string where = "  where estado = 1 ";
+            string where = "  where estado = 1 and patente = '" + patente + "' ";
 
             try
             {
@@ -119,7 +119,7 @@ namespace modelo
         {
             try
             {
-                datos.setearConsulta(" update Motos set cilindrada = @cilindrada, estado = @estado where IDMarca = @IDMarca, IDModelo = @IDModelo, patente = @patente ");
+                datos.setearConsulta(" ModifyMotos @IDMarca, @IDModelo, @patente, @cilindrada, @estado ");
 
                 datos.setearParametro("@IDMarca", moto.modelo.IDMarca);
                 datos.setearParametro("@IDModelo", moto.modelo.IDModelo);

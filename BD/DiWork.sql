@@ -114,7 +114,15 @@ create procedure addMoto
 ) 
 as
 begin
-	insert into Motos (IDMarca, IDModelo, patente, cilindrada, estado) values (@IDMarca, @IDModelo, @Patente, @Cilindrada, 1)
+	begin try
+		begin transaction
+				insert into Motos (IDMarca, IDModelo, patente, cilindrada, estado) values (@IDMarca, @IDModelo, @Patente, @Cilindrada, 1)
+			commit transaction
+	end try
+	begin catch
+		rollback transaction
+		raiserror('Error de insercion de datos', 16, 2)
+	end catch
 end
 
 go
@@ -129,5 +137,60 @@ create procedure addAutomovil
 ) 
 as
 begin
-	insert into Automoviles(IDMarca, IDModelo, patente, Tipo, cantidadPuetas, estado) values (@IDMarca, @IDModelo, @Patente, @Tipo, @CantidadPuertas, 1)
+	begin try
+		begin transaction
+			insert into Automoviles(IDMarca, IDModelo, patente, Tipo, cantidadPuetas, estado) values (@IDMarca, @IDModelo, @Patente, @Tipo, @CantidadPuertas, 1)
+		commit transaction
+	end try
+	begin catch
+		rollback transaction
+		raiserror('Error de insercion de datos', 16, 2)
+	end catch
+end
+
+go
+
+create procedure ModifyMotos
+(
+	@IDMarca int, 
+	@IDModelo int, 
+	@Patente varchar(9), 
+	@Cilindrada int,
+	@Estado bit
+)
+as
+begin
+	begin try
+		begin transaction
+			update Motos set IDMarca = @IDMarca, IDModelo = @IDModelo, cilindrada = @Cilindrada, estado = @Estado where patente = @Patente
+		commit transaction
+	end try
+	begin catch
+		rollback transaction
+		raiserror('Error de patente', 16, 2)
+	end catch
+end
+
+go
+
+create procedure ModifyAutomovil
+(
+	@IDMarca int, 
+	@IDModelo int, 
+	@Patente varchar(9), 
+	@Tipo varchar(15),
+	@CantidadPuertas int,
+	@Estado bit
+) 
+as
+begin
+	begin try
+		begin transaction
+			update Automoviles set IDMarca = @IDMarca, IDModelo = @IDModelo, tipo=@Tipo, cantidadPuetas = @CantidadPuertas, estado = @Estado where patente = @Patente
+		commit transaction
+	end try
+	begin catch
+		rollback transaction
+		raiserror('Error de patente', 16, 2)
+	end catch
 end

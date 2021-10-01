@@ -57,13 +57,13 @@ namespace modelo
             return lAutomovil;
         }
 
-        public Automovil listar(int Patente)
+        public Automovil listar(string patente)
         {
             Automovil auto = new Automovil();
             M_Marca marca = new M_Marca();
             M_Modelo modelo = new M_Modelo();
             string select = " select * from Automoviles ";
-            string where = "  where estado = 1 and patente = 1 ";
+            string where = "  where estado = 1 and patente = '" + patente + "' ";
 
             try
             {
@@ -122,16 +122,16 @@ namespace modelo
         {
             try
             {
-                datos.setearConsulta("");
+                datos.setearConsulta("ModifyAutomovil @IDMarca, @IDModelo, @Patente, @tipo, @CantidadPuertas, @Estado");
 
-                datos.setearParametro("", auto.patente);
-                datos.setearParametro("", auto.modelo.IDMarca);
-                datos.setearParametro("", auto.modelo.IDModelo);
-                datos.setearParametro("", auto.tipo.ToString());
-                datos.setearParametro("", auto.cantidadPuertas);
-                datos.setearParametro("", auto.patente);
-                datos.setearParametro("", auto.estado);
-
+                datos.setearParametro("@IDMarca", auto.modelo.IDMarca);
+                datos.setearParametro("@IDModelo", auto.modelo.IDModelo);
+                datos.setearParametro("@Patente", auto.patente);
+                datos.setearParametro("@Tipo", auto.tipo.ToString());
+                datos.setearParametro("@CantidadPuertas", auto.cantidadPuertas);
+                datos.setearParametro("@Estado", auto.estado);
+                
+                datos.EjecutarAccion();
 
             }
             catch (Exception ex)

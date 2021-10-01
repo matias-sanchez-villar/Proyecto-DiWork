@@ -58,7 +58,7 @@
                           <th><% = item.patente %></th>
                           <th><% = item.cilindrada %></th>
                           <td>
-                              <a href="?IDMarca=<% = item.patente %>">
+                              <a href="?Patente=<% = item.patente %>">
                                   <i class="fas fa-trash-alt"></i>
                               </a>
                           </td>
