@@ -15,76 +15,67 @@ namespace vista
     {
 
         /// <summary>
-        /// Control ddlPatenteAuto.
+        /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPatenteAuto;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Control txtManoObraAuto.
+        /// Control udp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtManoObraAuto;
+        protected global::System.Web.UI.UpdatePanel udp;
 
         /// <summary>
-        /// Control txtTiempoAuto.
+        /// Control ddlTipoVehiculo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTiempoAuto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoVehiculo;
 
         /// <summary>
-        /// Control btnAuto.
+        /// Control ddlPatente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAuto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPatente;
 
         /// <summary>
-        /// Control ddlPatenteMoto.
+        /// Control txtManoObra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPatenteMoto;
+        protected global::System.Web.UI.WebControls.TextBox txtManoObra;
 
         /// <summary>
-        /// Control txtManoObraMoto.
+        /// Control txtTiempo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtManoObraMoto;
+        protected global::System.Web.UI.WebControls.TextBox txtTiempo;
 
         /// <summary>
-        /// Control txtTimpoMoto.
+        /// Control btnEnviar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTimpoMoto;
-
-        /// <summary>
-        /// Control btnMoto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMoto;
+        protected global::System.Web.UI.WebControls.Button btnEnviar;
 
         /// <summary>
         /// Control ddlRepuestos.
