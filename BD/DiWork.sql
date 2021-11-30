@@ -1,196 +1,98 @@
 use master
-
+drop database DiWork
 go
-
 create database DiWork
-
 go
-
 use DiWork
-
 go
 
-create table Repuestos
-(
+create table Marcas(
 	ID int primary key not null identity(1,1),
-	nombre varchar(100) not null,
-	precio money not null check (precio > 0),
+	marca varchar(65) not null,
 	estado bit not null
 )
 
 go
 
-create table Desperfectos
-(
+create table Modelos(
 	ID int primary key not null identity(1,1),
-	descripcion varchar(500) not null,
-	manoDeObra varchar(300) not null,
-	tiempo int not null,
-	estado bit not null
-)
-
-go
-
-create table RepuestosXDesperfecto
-(
-	IDDesperfectos int foreign key references Desperfectos(ID),
-	IDRepuestos int foreign key references Repuestos(ID),
-	primary key (IDDesperfectos, IDRepuestos),
-	estado bit not null
-)
-
-go
-
-create table Marcas
-(
-	ID int primary key not null identity(1,1),
-	nombre varchar(100) not null,
-	estado bit not null
-)
-
-go
-
-create table Modelos
-(
-	ID int primary key not null identity(1,1),
-	IDMarcas int foreign key references Marcas(ID),
-	nombre varchar(100) not null,
-	estado bit not null
-)
-
-
-go
-
-create table Automoviles
-(
 	IDMarca int foreign key references Marcas(ID) not null,
-	IDModelo int foreign key references Modelos(ID) not null,
-	patente varchar(8) primary key not null,
-	tipo  varchar(40) not null,
-	cantidadPuetas int null check(CantidadPuetas > 0 and CantidadPuetas <= 5),
-	estado bit not null,
-)
-
-go
-
-create table Motos
-(
-	IDMarca int foreign key references Marcas(ID) not null,
-	IDModelo int foreign key references Modelos(ID) not null,
-	patente varchar(8) primary key not null,
-	cilindrada int not null check(cilindrada > 0),
+	modelo varchar(65) not null,
 	estado bit not null
 )
 
 go
 
-create table DesperfectoXMoto
-(
-	patente varchar(8) not null foreign key references Motos(patente),
-	IDDesperfecto int not null foreign key references Desperfectos(ID),
-	primary key(patente, IDDesperfecto)
+create table TipoAutomoviles(
+	ID int primary key not null,
+	tipo varchar(40) not null
 )
 
 go
 
-create table DesperfectoXAutomoviles
-(
-	patente varchar(8) not null foreign key references Automoviles(patente),
-	IDDesperfecto int not null foreign key references Desperfectos(ID)
-	primary key(patente, IDDesperfecto)
+create table presupuestos(
+	ID int primary key not null identity(1,1),
+	descripcion varchar(250) null,
+	costo money not null check(costo >= 0),
+	diasTrabajo int not null check(diasTrabajo >= 0)
 )
 
 go
 
-
-/* Procedimientos */
-
-create procedure addMoto 
-(
-	@IDMarca int, 
-	@IDModelo int, 
-	@Patente varchar(9), 
-	@Cilindrada int
-) 
-as
-begin
-	begin try
-		begin transaction
-				insert into Motos (IDMarca, IDModelo, patente, cilindrada, estado) values (@IDMarca, @IDModelo, @Patente, @Cilindrada, 1)
-			commit transaction
-	end try
-	begin catch
-		rollback transaction
-		raiserror('Error de insercion de datos', 16, 2)
-	end catch
-end
-
-go
-
-create procedure addAutomovil
-(
-	@IDMarca int, 
-	@IDModelo int, 
-	@Patente varchar(9), 
-	@Tipo varchar(15),
-	@CantidadPuertas int
-) 
-as
-begin
-	begin try
-		begin transaction
-			insert into Automoviles(IDMarca, IDModelo, patente, Tipo, cantidadPuetas, estado) values (@IDMarca, @IDModelo, @Patente, @Tipo, @CantidadPuertas, 1)
-		commit transaction
-	end try
-	begin catch
-		rollback transaction
-		raiserror('Error de insercion de datos', 16, 2)
-	end catch
-end
-
-go
-
-create procedure ModifyMotos
-(
-	@IDMarca int, 
-	@IDModelo int, 
-	@Patente varchar(9), 
-	@Cilindrada int,
-	@Estado bit
+create table Repuestos(
+	ID int primary key not null identity(1,1),
+	repuesto varchar(75) not null,
+	precio money not null check(precio >= 0),
+	estado bit not null
 )
-as
-begin
-	begin try
-		begin transaction
-			update Motos set IDMarca = @IDMarca, IDModelo = @IDModelo, cilindrada = @Cilindrada, estado = @Estado where patente = @Patente
-		commit transaction
-	end try
-	begin catch
-		rollback transaction
-		raiserror('Error de patente', 16, 2)
-	end catch
-end
 
 go
 
-create procedure ModifyAutomovil
-(
-	@IDMarca int, 
-	@IDModelo int, 
-	@Patente varchar(9), 
-	@Tipo varchar(15),
-	@CantidadPuertas int,
-	@Estado bit
-) 
-as
-begin
-	begin try
-		begin transaction
-			update Automoviles set IDMarca = @IDMarca, IDModelo = @IDModelo, tipo=@Tipo, cantidadPuetas = @CantidadPuertas, estado = @Estado where patente = @Patente
-		commit transaction
-	end try
-	begin catch
-		rollback transaction
-		raiserror('Error de patente', 16, 2)
-	end catch
-end
+create table RepuestosxPresupuestos(
+	IDRepuesto int foreign key references Repuestos(ID) not null,
+	IDPresupuesto int foreign key references Presupuestos(ID) not null,
+	cantidadRepuestos int not null check(cantidadRepuestos > 0),
+	costoRepuestos money not null check(costoRepuestos >= 0),
+	primary key(IDRepuesto, IDPresupuesto)
+)
+
+go
+
+create table Motos(
+	ID int primary key not null identity(1,1),
+	IDModelo int foreign key references Modelos(ID) not null,
+	patente varchar(15) null,
+	cilindrada int null check(cilindrada <= 9999)
+)
+
+go
+
+create table Automoviles(
+	ID int primary key not null identity(1,1),
+	IDModelo int foreign key references Modelos(ID) not null,
+	IDTipo int foreign key references TipoAutomoviles(ID) not null,
+	patente varchar(15) null,
+	cantidadPuertas int null check(cantidadPuertas <= 6)
+)
+
+go
+
+create table PresupuestosxMotos(
+	IDMoto int foreign key references Motos(ID) not null,
+	IDPresupuesto int foreign key references Repuestos(ID) not null,
+	CostoTotal money not null check(costoTotal >= 0),
+	primary key(IDMoto, IDPresupuesto)
+)
+
+go
+
+create table PresupuestosxAutomovil(
+	IDAutomovil int foreign key references Automoviles(ID) not null,
+	IDPresupuesto int foreign key references Repuestos(ID) not null,
+	CostoTotal money not null check(costoTotal >= 0),
+	primary key(IDAutomovil, IDPresupuesto)
+)
+
+
+
+
