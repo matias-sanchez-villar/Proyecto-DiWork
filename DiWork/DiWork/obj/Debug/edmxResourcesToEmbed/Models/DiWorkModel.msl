@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DiWorkdbModelStoreContainer" CdmEntityContainer="DiWorkdbEntities">
+    <EntitySetMapping Name="Automoviles">
+      <EntityTypeMapping TypeName="DiWorkdbModel.Automoviles">
+        <MappingFragment StoreEntitySet="Automoviles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDModelo" ColumnName="IDModelo" />
+          <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+          <ScalarProperty Name="patente" ColumnName="patente" />
+          <ScalarProperty Name="cantidadPuertas" ColumnName="cantidadPuertas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marcas">
+      <EntityTypeMapping TypeName="DiWorkdbModel.Marcas">
+        <MappingFragment StoreEntitySet="Marcas">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modelos">
+      <EntityTypeMapping TypeName="DiWorkdbModel.Modelos">
+        <MappingFragment StoreEntitySet="Modelos">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDMarca" ColumnName="IDMarca" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Motos">
+      <EntityTypeMapping TypeName="DiWorkdbModel.Motos">
+        <MappingFragment StoreEntitySet="Motos">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDModelo" ColumnName="IDModelo" />
+          <ScalarProperty Name="patente" ColumnName="patente" />
+          <ScalarProperty Name="cilindrada" ColumnName="cilindrada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="presupuestos">
+      <EntityTypeMapping TypeName="DiWorkdbModel.presupuestos">
+        <MappingFragment StoreEntitySet="presupuestos">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="diasTrabajo" ColumnName="diasTrabajo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PresupuestosxAutomovil">
+      <EntityTypeMapping TypeName="DiWorkdbModel.PresupuestosxAutomovil">
+        <MappingFragment StoreEntitySet="PresupuestosxAutomovil">
+          <ScalarProperty Name="IDAutomovil" ColumnName="IDAutomovil" />
+          <ScalarProperty Name="IDPresupuesto" ColumnName="IDPresupuesto" />
+          <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PresupuestosxMotos">
+      <EntityTypeMapping TypeName="DiWorkdbModel.PresupuestosxMotos">
+        <MappingFragment StoreEntitySet="PresupuestosxMotos">
+          <ScalarProperty Name="IDMoto" ColumnName="IDMoto" />
+          <ScalarProperty Name="IDPresupuesto" ColumnName="IDPresupuesto" />
+          <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repuestos">
+      <EntityTypeMapping TypeName="DiWorkdbModel.Repuestos">
+        <MappingFragment StoreEntitySet="Repuestos">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="repuesto" ColumnName="repuesto" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepuestosxPresupuestos">
+      <EntityTypeMapping TypeName="DiWorkdbModel.RepuestosxPresupuestos">
+        <MappingFragment StoreEntitySet="RepuestosxPresupuestos">
+          <ScalarProperty Name="IDRepuesto" ColumnName="IDRepuesto" />
+          <ScalarProperty Name="IDPresupuesto" ColumnName="IDPresupuesto" />
+          <ScalarProperty Name="cantidadRepuestos" ColumnName="cantidadRepuestos" />
+          <ScalarProperty Name="costoRepuestos" ColumnName="costoRepuestos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoAutomoviles">
+      <EntityTypeMapping TypeName="DiWorkdbModel.TipoAutomoviles">
+        <MappingFragment StoreEntitySet="TipoAutomoviles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

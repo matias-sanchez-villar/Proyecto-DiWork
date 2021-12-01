@@ -1,0 +1,680 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DiWorkdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Automoviles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDModelo" Type="int" Nullable="false" />
+          <Property Name="IDTipo" Type="int" Nullable="false" />
+          <Property Name="patente" Type="varchar" MaxLength="15" />
+          <Property Name="cantidadPuertas" Type="int" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMarca" Type="int" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="65" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Motos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDModelo" Type="int" Nullable="false" />
+          <Property Name="patente" Type="varchar" MaxLength="15" />
+          <Property Name="cilindrada" Type="int" />
+        </EntityType>
+        <EntityType Name="presupuestos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="costo" Type="money" Nullable="false" />
+          <Property Name="diasTrabajo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PresupuestosxAutomovil">
+          <Key>
+            <PropertyRef Name="IDAutomovil" />
+            <PropertyRef Name="IDPresupuesto" />
+          </Key>
+          <Property Name="IDAutomovil" Type="int" Nullable="false" />
+          <Property Name="IDPresupuesto" Type="int" Nullable="false" />
+          <Property Name="CostoTotal" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PresupuestosxMotos">
+          <Key>
+            <PropertyRef Name="IDMoto" />
+            <PropertyRef Name="IDPresupuesto" />
+          </Key>
+          <Property Name="IDMoto" Type="int" Nullable="false" />
+          <Property Name="IDPresupuesto" Type="int" Nullable="false" />
+          <Property Name="CostoTotal" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repuestos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="repuesto" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="precio" Type="money" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RepuestosxPresupuestos">
+          <Key>
+            <PropertyRef Name="IDRepuesto" />
+            <PropertyRef Name="IDPresupuesto" />
+          </Key>
+          <Property Name="IDRepuesto" Type="int" Nullable="false" />
+          <Property Name="IDPresupuesto" Type="int" Nullable="false" />
+          <Property Name="cantidadRepuestos" Type="int" Nullable="false" />
+          <Property Name="costoRepuestos" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoAutomoviles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Automovil__IDMod__34C8D9D1">
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+          <End Role="Automoviles" Type="Self.Automoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Automoviles">
+              <PropertyRef Name="IDModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Automovil__IDTip__35BCFE0A">
+          <End Role="TipoAutomoviles" Type="Self.TipoAutomoviles" Multiplicity="1" />
+          <End Role="Automoviles" Type="Self.Automoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAutomoviles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Automoviles">
+              <PropertyRef Name="IDTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modelos__IDMarca__36B12243">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Modelos">
+              <PropertyRef Name="IDMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Motos__IDModelo__37A5467C">
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+          <End Role="Motos" Type="Self.Motos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Motos">
+              <PropertyRef Name="IDModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDAut__38996AB5">
+          <End Role="Automoviles" Type="Self.Automoviles" Multiplicity="1" />
+          <End Role="PresupuestosxAutomovil" Type="Self.PresupuestosxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automoviles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxAutomovil">
+              <PropertyRef Name="IDAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDMot__3A81B327">
+          <End Role="Motos" Type="Self.Motos" Multiplicity="1" />
+          <End Role="PresupuestosxMotos" Type="Self.PresupuestosxMotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxMotos">
+              <PropertyRef Name="IDMoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDPre__398D8EEE">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="PresupuestosxAutomovil" Type="Self.PresupuestosxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxAutomovil">
+              <PropertyRef Name="IDPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDPre__3B75D760">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="PresupuestosxMotos" Type="Self.PresupuestosxMotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxMotos">
+              <PropertyRef Name="IDPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repuestos__IDPre__3D5E1FD2">
+          <End Role="presupuestos" Type="Self.presupuestos" Multiplicity="1" />
+          <End Role="RepuestosxPresupuestos" Type="Self.RepuestosxPresupuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presupuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RepuestosxPresupuestos">
+              <PropertyRef Name="IDPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repuestos__IDRep__3C69FB99">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="RepuestosxPresupuestos" Type="Self.RepuestosxPresupuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RepuestosxPresupuestos">
+              <PropertyRef Name="IDRepuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiWorkdbModelStoreContainer">
+          <EntitySet Name="Automoviles" EntityType="Self.Automoviles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelos" EntityType="Self.Modelos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Motos" EntityType="Self.Motos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="presupuestos" EntityType="Self.presupuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresupuestosxAutomovil" EntityType="Self.PresupuestosxAutomovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresupuestosxMotos" EntityType="Self.PresupuestosxMotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repuestos" EntityType="Self.Repuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepuestosxPresupuestos" EntityType="Self.RepuestosxPresupuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAutomoviles" EntityType="Self.TipoAutomoviles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Automovil__IDMod__34C8D9D1" Association="Self.FK__Automovil__IDMod__34C8D9D1">
+            <End Role="Modelos" EntitySet="Modelos" />
+            <End Role="Automoviles" EntitySet="Automoviles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Automovil__IDTip__35BCFE0A" Association="Self.FK__Automovil__IDTip__35BCFE0A">
+            <End Role="TipoAutomoviles" EntitySet="TipoAutomoviles" />
+            <End Role="Automoviles" EntitySet="Automoviles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modelos__IDMarca__36B12243" Association="Self.FK__Modelos__IDMarca__36B12243">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modelos" EntitySet="Modelos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Motos__IDModelo__37A5467C" Association="Self.FK__Motos__IDModelo__37A5467C">
+            <End Role="Modelos" EntitySet="Modelos" />
+            <End Role="Motos" EntitySet="Motos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDAut__38996AB5" Association="Self.FK__Presupues__IDAut__38996AB5">
+            <End Role="Automoviles" EntitySet="Automoviles" />
+            <End Role="PresupuestosxAutomovil" EntitySet="PresupuestosxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDMot__3A81B327" Association="Self.FK__Presupues__IDMot__3A81B327">
+            <End Role="Motos" EntitySet="Motos" />
+            <End Role="PresupuestosxMotos" EntitySet="PresupuestosxMotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDPre__398D8EEE" Association="Self.FK__Presupues__IDPre__398D8EEE">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="PresupuestosxAutomovil" EntitySet="PresupuestosxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDPre__3B75D760" Association="Self.FK__Presupues__IDPre__3B75D760">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="PresupuestosxMotos" EntitySet="PresupuestosxMotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repuestos__IDPre__3D5E1FD2" Association="Self.FK__Repuestos__IDPre__3D5E1FD2">
+            <End Role="presupuestos" EntitySet="presupuestos" />
+            <End Role="RepuestosxPresupuestos" EntitySet="RepuestosxPresupuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repuestos__IDRep__3C69FB99" Association="Self.FK__Repuestos__IDRep__3C69FB99">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="RepuestosxPresupuestos" EntitySet="RepuestosxPresupuestos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DiWorkdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Automoviles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDModelo" Type="Int32" Nullable="false" />
+          <Property Name="IDTipo" Type="Int32" Nullable="false" />
+          <Property Name="patente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cantidadPuertas" Type="Int32" />
+          <NavigationProperty Name="Modelos" Relationship="Self.FK__Automovil__IDMod__34C8D9D1" FromRole="Automoviles" ToRole="Modelos" />
+          <NavigationProperty Name="TipoAutomoviles" Relationship="Self.FK__Automovil__IDTip__35BCFE0A" FromRole="Automoviles" ToRole="TipoAutomoviles" />
+          <NavigationProperty Name="PresupuestosxAutomovil" Relationship="Self.FK__Presupues__IDAut__38996AB5" FromRole="Automoviles" ToRole="PresupuestosxAutomovil" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="marca" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Modelos" Relationship="Self.FK__Modelos__IDMarca__36B12243" FromRole="Marcas" ToRole="Modelos" />
+        </EntityType>
+        <EntityType Name="Modelos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMarca" Type="Int32" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Automoviles" Relationship="Self.FK__Automovil__IDMod__34C8D9D1" FromRole="Modelos" ToRole="Automoviles" />
+          <NavigationProperty Name="Marcas" Relationship="Self.FK__Modelos__IDMarca__36B12243" FromRole="Modelos" ToRole="Marcas" />
+          <NavigationProperty Name="Motos" Relationship="Self.FK__Motos__IDModelo__37A5467C" FromRole="Modelos" ToRole="Motos" />
+        </EntityType>
+        <EntityType Name="Motos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDModelo" Type="Int32" Nullable="false" />
+          <Property Name="patente" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="cilindrada" Type="Int32" />
+          <NavigationProperty Name="Modelos" Relationship="Self.FK__Motos__IDModelo__37A5467C" FromRole="Motos" ToRole="Modelos" />
+          <NavigationProperty Name="PresupuestosxMotos" Relationship="Self.FK__Presupues__IDMot__3A81B327" FromRole="Motos" ToRole="PresupuestosxMotos" />
+        </EntityType>
+        <EntityType Name="presupuestos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="diasTrabajo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RepuestosxPresupuestos" Relationship="Self.FK__Repuestos__IDPre__3D5E1FD2" FromRole="presupuestos" ToRole="RepuestosxPresupuestos" />
+        </EntityType>
+        <EntityType Name="PresupuestosxAutomovil">
+          <Key>
+            <PropertyRef Name="IDAutomovil" />
+            <PropertyRef Name="IDPresupuesto" />
+          </Key>
+          <Property Name="IDAutomovil" Type="Int32" Nullable="false" />
+          <Property Name="IDPresupuesto" Type="Int32" Nullable="false" />
+          <Property Name="CostoTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Automoviles" Relationship="Self.FK__Presupues__IDAut__38996AB5" FromRole="PresupuestosxAutomovil" ToRole="Automoviles" />
+          <NavigationProperty Name="Repuestos" Relationship="Self.FK__Presupues__IDPre__398D8EEE" FromRole="PresupuestosxAutomovil" ToRole="Repuestos" />
+        </EntityType>
+        <EntityType Name="PresupuestosxMotos">
+          <Key>
+            <PropertyRef Name="IDMoto" />
+            <PropertyRef Name="IDPresupuesto" />
+          </Key>
+          <Property Name="IDMoto" Type="Int32" Nullable="false" />
+          <Property Name="IDPresupuesto" Type="Int32" Nullable="false" />
+          <Property Name="CostoTotal" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Motos" Relationship="Self.FK__Presupues__IDMot__3A81B327" FromRole="PresupuestosxMotos" ToRole="Motos" />
+          <NavigationProperty Name="Repuestos" Relationship="Self.FK__Presupues__IDPre__3B75D760" FromRole="PresupuestosxMotos" ToRole="Repuestos" />
+        </EntityType>
+        <EntityType Name="Repuestos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="repuesto" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PresupuestosxAutomovil" Relationship="Self.FK__Presupues__IDPre__398D8EEE" FromRole="Repuestos" ToRole="PresupuestosxAutomovil" />
+          <NavigationProperty Name="PresupuestosxMotos" Relationship="Self.FK__Presupues__IDPre__3B75D760" FromRole="Repuestos" ToRole="PresupuestosxMotos" />
+          <NavigationProperty Name="RepuestosxPresupuestos" Relationship="Self.FK__Repuestos__IDRep__3C69FB99" FromRole="Repuestos" ToRole="RepuestosxPresupuestos" />
+        </EntityType>
+        <EntityType Name="RepuestosxPresupuestos">
+          <Key>
+            <PropertyRef Name="IDRepuesto" />
+            <PropertyRef Name="IDPresupuesto" />
+          </Key>
+          <Property Name="IDRepuesto" Type="Int32" Nullable="false" />
+          <Property Name="IDPresupuesto" Type="Int32" Nullable="false" />
+          <Property Name="cantidadRepuestos" Type="Int32" Nullable="false" />
+          <Property Name="costoRepuestos" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="presupuestos" Relationship="Self.FK__Repuestos__IDPre__3D5E1FD2" FromRole="RepuestosxPresupuestos" ToRole="presupuestos" />
+          <NavigationProperty Name="Repuestos" Relationship="Self.FK__Repuestos__IDRep__3C69FB99" FromRole="RepuestosxPresupuestos" ToRole="Repuestos" />
+        </EntityType>
+        <EntityType Name="TipoAutomoviles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Automoviles" Relationship="Self.FK__Automovil__IDTip__35BCFE0A" FromRole="TipoAutomoviles" ToRole="Automoviles" />
+        </EntityType>
+        <Association Name="FK__Automovil__IDMod__34C8D9D1">
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+          <End Role="Automoviles" Type="Self.Automoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Automoviles">
+              <PropertyRef Name="IDModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Automovil__IDTip__35BCFE0A">
+          <End Role="TipoAutomoviles" Type="Self.TipoAutomoviles" Multiplicity="1" />
+          <End Role="Automoviles" Type="Self.Automoviles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAutomoviles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Automoviles">
+              <PropertyRef Name="IDTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDAut__38996AB5">
+          <End Role="Automoviles" Type="Self.Automoviles" Multiplicity="1" />
+          <End Role="PresupuestosxAutomovil" Type="Self.PresupuestosxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automoviles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxAutomovil">
+              <PropertyRef Name="IDAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Modelos__IDMarca__36B12243">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Modelos">
+              <PropertyRef Name="IDMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Motos__IDModelo__37A5467C">
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+          <End Role="Motos" Type="Self.Motos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Motos">
+              <PropertyRef Name="IDModelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDMot__3A81B327">
+          <End Role="Motos" Type="Self.Motos" Multiplicity="1" />
+          <End Role="PresupuestosxMotos" Type="Self.PresupuestosxMotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Motos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxMotos">
+              <PropertyRef Name="IDMoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repuestos__IDPre__3D5E1FD2">
+          <End Role="presupuestos" Type="Self.presupuestos" Multiplicity="1" />
+          <End Role="RepuestosxPresupuestos" Type="Self.RepuestosxPresupuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="presupuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RepuestosxPresupuestos">
+              <PropertyRef Name="IDPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDPre__398D8EEE">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="PresupuestosxAutomovil" Type="Self.PresupuestosxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxAutomovil">
+              <PropertyRef Name="IDPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Presupues__IDPre__3B75D760">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="PresupuestosxMotos" Type="Self.PresupuestosxMotos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PresupuestosxMotos">
+              <PropertyRef Name="IDPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repuestos__IDRep__3C69FB99">
+          <End Role="Repuestos" Type="Self.Repuestos" Multiplicity="1" />
+          <End Role="RepuestosxPresupuestos" Type="Self.RepuestosxPresupuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Repuestos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RepuestosxPresupuestos">
+              <PropertyRef Name="IDRepuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DiWorkdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Automoviles" EntityType="Self.Automoviles" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" />
+          <EntitySet Name="Modelos" EntityType="Self.Modelos" />
+          <EntitySet Name="Motos" EntityType="Self.Motos" />
+          <EntitySet Name="presupuestos" EntityType="Self.presupuestos" />
+          <EntitySet Name="PresupuestosxAutomovil" EntityType="Self.PresupuestosxAutomovil" />
+          <EntitySet Name="PresupuestosxMotos" EntityType="Self.PresupuestosxMotos" />
+          <EntitySet Name="Repuestos" EntityType="Self.Repuestos" />
+          <EntitySet Name="RepuestosxPresupuestos" EntityType="Self.RepuestosxPresupuestos" />
+          <EntitySet Name="TipoAutomoviles" EntityType="Self.TipoAutomoviles" />
+          <AssociationSet Name="FK__Automovil__IDMod__34C8D9D1" Association="Self.FK__Automovil__IDMod__34C8D9D1">
+            <End Role="Modelos" EntitySet="Modelos" />
+            <End Role="Automoviles" EntitySet="Automoviles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Automovil__IDTip__35BCFE0A" Association="Self.FK__Automovil__IDTip__35BCFE0A">
+            <End Role="TipoAutomoviles" EntitySet="TipoAutomoviles" />
+            <End Role="Automoviles" EntitySet="Automoviles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDAut__38996AB5" Association="Self.FK__Presupues__IDAut__38996AB5">
+            <End Role="Automoviles" EntitySet="Automoviles" />
+            <End Role="PresupuestosxAutomovil" EntitySet="PresupuestosxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Modelos__IDMarca__36B12243" Association="Self.FK__Modelos__IDMarca__36B12243">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modelos" EntitySet="Modelos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Motos__IDModelo__37A5467C" Association="Self.FK__Motos__IDModelo__37A5467C">
+            <End Role="Modelos" EntitySet="Modelos" />
+            <End Role="Motos" EntitySet="Motos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDMot__3A81B327" Association="Self.FK__Presupues__IDMot__3A81B327">
+            <End Role="Motos" EntitySet="Motos" />
+            <End Role="PresupuestosxMotos" EntitySet="PresupuestosxMotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repuestos__IDPre__3D5E1FD2" Association="Self.FK__Repuestos__IDPre__3D5E1FD2">
+            <End Role="presupuestos" EntitySet="presupuestos" />
+            <End Role="RepuestosxPresupuestos" EntitySet="RepuestosxPresupuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDPre__398D8EEE" Association="Self.FK__Presupues__IDPre__398D8EEE">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="PresupuestosxAutomovil" EntitySet="PresupuestosxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Presupues__IDPre__3B75D760" Association="Self.FK__Presupues__IDPre__3B75D760">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="PresupuestosxMotos" EntitySet="PresupuestosxMotos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repuestos__IDRep__3C69FB99" Association="Self.FK__Repuestos__IDRep__3C69FB99">
+            <End Role="Repuestos" EntitySet="Repuestos" />
+            <End Role="RepuestosxPresupuestos" EntitySet="RepuestosxPresupuestos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DiWorkdbModelStoreContainer" CdmEntityContainer="DiWorkdbEntities">
+          <EntitySetMapping Name="Automoviles">
+            <EntityTypeMapping TypeName="DiWorkdbModel.Automoviles">
+              <MappingFragment StoreEntitySet="Automoviles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDModelo" ColumnName="IDModelo" />
+                <ScalarProperty Name="IDTipo" ColumnName="IDTipo" />
+                <ScalarProperty Name="patente" ColumnName="patente" />
+                <ScalarProperty Name="cantidadPuertas" ColumnName="cantidadPuertas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="DiWorkdbModel.Marcas">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelos">
+            <EntityTypeMapping TypeName="DiWorkdbModel.Modelos">
+              <MappingFragment StoreEntitySet="Modelos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDMarca" ColumnName="IDMarca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Motos">
+            <EntityTypeMapping TypeName="DiWorkdbModel.Motos">
+              <MappingFragment StoreEntitySet="Motos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDModelo" ColumnName="IDModelo" />
+                <ScalarProperty Name="patente" ColumnName="patente" />
+                <ScalarProperty Name="cilindrada" ColumnName="cilindrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="presupuestos">
+            <EntityTypeMapping TypeName="DiWorkdbModel.presupuestos">
+              <MappingFragment StoreEntitySet="presupuestos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="diasTrabajo" ColumnName="diasTrabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresupuestosxAutomovil">
+            <EntityTypeMapping TypeName="DiWorkdbModel.PresupuestosxAutomovil">
+              <MappingFragment StoreEntitySet="PresupuestosxAutomovil">
+                <ScalarProperty Name="IDAutomovil" ColumnName="IDAutomovil" />
+                <ScalarProperty Name="IDPresupuesto" ColumnName="IDPresupuesto" />
+                <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PresupuestosxMotos">
+            <EntityTypeMapping TypeName="DiWorkdbModel.PresupuestosxMotos">
+              <MappingFragment StoreEntitySet="PresupuestosxMotos">
+                <ScalarProperty Name="IDMoto" ColumnName="IDMoto" />
+                <ScalarProperty Name="IDPresupuesto" ColumnName="IDPresupuesto" />
+                <ScalarProperty Name="CostoTotal" ColumnName="CostoTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repuestos">
+            <EntityTypeMapping TypeName="DiWorkdbModel.Repuestos">
+              <MappingFragment StoreEntitySet="Repuestos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="repuesto" ColumnName="repuesto" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepuestosxPresupuestos">
+            <EntityTypeMapping TypeName="DiWorkdbModel.RepuestosxPresupuestos">
+              <MappingFragment StoreEntitySet="RepuestosxPresupuestos">
+                <ScalarProperty Name="IDRepuesto" ColumnName="IDRepuesto" />
+                <ScalarProperty Name="IDPresupuesto" ColumnName="IDPresupuesto" />
+                <ScalarProperty Name="cantidadRepuestos" ColumnName="cantidadRepuestos" />
+                <ScalarProperty Name="costoRepuestos" ColumnName="costoRepuestos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAutomoviles">
+            <EntityTypeMapping TypeName="DiWorkdbModel.TipoAutomoviles">
+              <MappingFragment StoreEntitySet="TipoAutomoviles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aafc754b6bc344ff81f379bc3431f49d" Name="Diagram1">
+        <EntityTypeShape EntityType="DiWorkdbModel.Automoviles" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.Marcas" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.Modelos" Width="1.5" PointX="1.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.Motos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.presupuestos" Width="1.5" PointX="0.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.PresupuestosxAutomovil" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.PresupuestosxMotos" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.Repuestos" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.RepuestosxPresupuestos" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiWorkdbModel.TipoAutomoviles" Width="1.5" PointX="1.5" PointY="18" IsExpanded="true" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Automovil__IDMod__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Automovil__IDTip__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Presupues__IDAut__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Modelos__IDMarca__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Motos__IDModelo__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Presupues__IDMot__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Repuestos__IDPre__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Presupues__IDPre__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Presupues__IDPre__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="DiWorkdbModel.FK__Repuestos__IDRep__3C69FB99" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
