@@ -11,9 +11,16 @@ namespace DiWork.Dato
 
         public IEnumerable<Marcas> listar()
         {
-            using (DiWorkdbEntities contexto = new DiWorkdbEntities())
+            try
             {
-                return contexto.Marcas.AsNoTracking().Where(x=> x.estado == true).ToList();
+                using (DiWorkdbEntities contexto = new DiWorkdbEntities())
+                {
+                    return contexto.Marcas.AsNoTracking().Where(x => x.estado == true).ToList();
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
             }
         }
         

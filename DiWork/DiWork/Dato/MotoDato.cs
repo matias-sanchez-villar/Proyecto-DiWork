@@ -11,9 +11,16 @@ namespace DiWork.Dato
 
         public IEnumerable<Motos> Listar()
         {
-            using (DiWorkdbEntities contexto = new DiWorkdbEntities())
+            try
             {
-                return contexto.Motos.AsNoTracking().ToList();
+                using (DiWorkdbEntities contexto = new DiWorkdbEntities())
+                {
+                    return contexto.Motos.AsNoTracking().ToList();
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
             }
         }
 

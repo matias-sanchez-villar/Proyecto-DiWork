@@ -15,8 +15,16 @@ namespace DiWork.Controllers
         //Index Lista todas las marcas
         public ActionResult Index()
         {
-            IEnumerable<Marcas> lista = dato.listar();
-            return View(lista);
+            try
+            {
+                IEnumerable<Marcas> lista = dato.listar();
+                return View(lista);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            
         }
 
 

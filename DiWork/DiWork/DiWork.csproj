@@ -130,7 +130,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarcaController.cs" />
+    <Compile Include="Controllers\ModeloController.cs" />
     <Compile Include="Dato\MarcaDato.cs" />
+    <Compile Include="Dato\ModeloDato.cs" />
     <Compile Include="Dato\MotoDato.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,6 +240,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Marca\Index.cshtml" />
+    <Content Include="Views\Modelo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
